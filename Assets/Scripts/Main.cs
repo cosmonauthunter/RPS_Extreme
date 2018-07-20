@@ -5,11 +5,13 @@ using System.Collections;
 public class Main : MonoBehaviour
 {
 	int clicks; // A variable for the amount of VALID moves
+	int clicksEnemy; // A variable for the amount of VALID moves
 
 	void Start()
 	{
 		// Initializes the number of clicks to 0
 		clicks = 0; // So the player cannot initiate any other GameObject's animation after already choosing one
+		clicksEnemy = 0; // So the player cannot initiate any other GameObject's animation after already choosing one
 
 		//// Calculations for a desired screen size
 		// Sets the screen's aspect ratio to 20:9
@@ -116,7 +118,7 @@ public class Main : MonoBehaviour
             {
 				print("hey2");
                
-                clicks = 1; // The first valid click will make this variable 1
+				clicksEnemy = 1; // The first valid click will make this variable 1
 
                 // Get the animator of the selected GameObject
                 Animator animPlayer = playerBox.GetComponent<Animator>();
@@ -135,7 +137,7 @@ public class Main : MonoBehaviour
 
             if (playerBox != null)
             {
-                clicks = 1; // The first valid move will make this variable 1
+				clicksEnemy = 1; // The first valid move will make this variable 1
 
                 // Get the animator of the clicked GameObject
                 Animator animPlayer = playerBox.GetComponent<Animator>();
@@ -149,11 +151,11 @@ public class Main : MonoBehaviour
 
         if (Input.GetKeyDown("p"))
         {
-            GameObject playerBox = GameObject.Find("ScissorBox_Enemy"); // Get the clicked GameObject
+			GameObject playerBox = GameObject.Find("PaperBox_Enemy"); // Get the clicked GameObject
 
             if (playerBox != null)
             {
-                clicks = 1; // The first valid click will make this variable 1
+				clicksEnemy = 1; // The first valid click will make this variable 1
                 // Get the animator of the clicked GameObject
                 Animator animPlayer = playerBox.GetComponent<Animator>();
                 animPlayer.enabled = true; // Play the first animation
