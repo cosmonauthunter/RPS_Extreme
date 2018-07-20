@@ -57,7 +57,7 @@ public class Main : MonoBehaviour
 		{
 			GameObject playerBox = GameObject.Find("PaperBox");// Get the clicked GameObject
 			print("hey");
-			if (playerBox != null && playerBox.tag == "Clickable" && clicks == 0)
+			if (playerBox != null && clicks == 0)
 			{
 				clicks = 1; // The first valid click will make this variable 1
 
@@ -76,7 +76,7 @@ public class Main : MonoBehaviour
         {
 			GameObject playerBox = GameObject.Find("RockBox"); // Get the clicked GameObject
 
-            if (playerBox != null && playerBox.tag == "Clickable" && clicks == 0)
+            if (playerBox != null && clicks == 0)
             {
                 clicks = 1; // The first valid move will make this variable 1
 
@@ -94,7 +94,7 @@ public class Main : MonoBehaviour
         {
 			GameObject playerBox = GameObject.Find("ScissorBox"); // Get the clicked GameObject
 
-            if (playerBox != null && playerBox.tag == "Clickable" && clicks == 0)
+            if (playerBox != null && clicks == 0)
             {
                 clicks = 1; // The first valid click will make this variable 1
                 // Get the animator of the clicked GameObject
@@ -112,7 +112,7 @@ public class Main : MonoBehaviour
 		if (Input.GetKeyDown("i"))
         {
 			GameObject playerBox = GameObject.Find("ScissorBox_Enemy");// Get the clicked GameObject
-            if (playerBox != null && playerBox.tag == "Clickable2")
+            if (playerBox != null)
             {
 				print("hey2");
                
@@ -133,7 +133,7 @@ public class Main : MonoBehaviour
         {
 			GameObject playerBox = GameObject.Find("RockBox_Enemy"); // Get the clicked GameObject
 
-            if (playerBox != null && playerBox.tag == "Clickable2")
+            if (playerBox != null)
             {
                 clicks = 1; // The first valid move will make this variable 1
 
@@ -151,7 +151,7 @@ public class Main : MonoBehaviour
         {
             GameObject playerBox = GameObject.Find("ScissorBox_Enemy"); // Get the clicked GameObject
 
-            if (playerBox != null && playerBox.tag == "Clickable2")
+            if (playerBox != null)
             {
                 clicks = 1; // The first valid click will make this variable 1
                 // Get the animator of the clicked GameObject
