@@ -114,7 +114,7 @@ public class Main : MonoBehaviour
 		if (Input.GetKeyDown("i"))
         {
 			GameObject playerBox = GameObject.Find("ScissorBox_Enemy");// Get the clicked GameObject
-            if (playerBox != null)
+			if (playerBox != null && clicksEnemy == 0)
             {
 				print("hey2");
                
@@ -135,7 +135,7 @@ public class Main : MonoBehaviour
         {
 			GameObject playerBox = GameObject.Find("RockBox_Enemy"); // Get the clicked GameObject
 
-            if (playerBox != null)
+			if (playerBox != null && clicksEnemy == 0)
             {
 				clicksEnemy = 1; // The first valid move will make this variable 1
 
@@ -153,7 +153,7 @@ public class Main : MonoBehaviour
         {
 			GameObject playerBox = GameObject.Find("PaperBox_Enemy"); // Get the clicked GameObject
 
-            if (playerBox != null)
+			if (playerBox != null && clicksEnemy == 0)
             {
 				clicksEnemy = 1; // The first valid click will make this variable 1
                 // Get the animator of the clicked GameObject
