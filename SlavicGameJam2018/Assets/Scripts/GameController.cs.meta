@@ -3,7 +3,18 @@ guid: 91c2bee821dbeb54085d906c22ef4241
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - timerClock: {instanceID: 0}
+  - timerGauge: {instanceID: 0}
+  - PlayerOneHealthBar: {instanceID: 0}
+  - PlayerTwoHealthBar: {instanceID: 0}
+  - PlayerOneSwitches: {instanceID: 0}
+  - PlayerTwoSwitches: {instanceID: 0}
+  - PlayerOneCard: {instanceID: 0}
+  - PlayerTwoCard: {instanceID: 0}
+  - cardPapper: {instanceID: 0}
+  - cardRock: {instanceID: 0}
+  - cardScissors: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
