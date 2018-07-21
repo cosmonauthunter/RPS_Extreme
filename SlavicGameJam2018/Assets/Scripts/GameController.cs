@@ -29,12 +29,6 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     SpriteRenderer PlayerTwoCard;
 
-	[SerializeField]
-	Sprite cardPapper;
-	[SerializeField]
-	Sprite cardRock;
-	[SerializeField]
-	Sprite cardScissors;
 
 
     float initialGaugeSize;
@@ -67,37 +61,58 @@ public class GameController : MonoBehaviour {
         if (inputAllowed) {
             if (PlayerOne.cardSwitches > 0) {
                 if (Input.GetKeyDown("q")) {
-                    PlayerOne.SwitchToRock();
-					PlayerOneCard.GetComponent<SpriteRenderer>().sprite = cardRock;
-
+					PlayerOne.SwitchToRock();
                     PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
+
+
+					// Get the animator of the clicked GameObject
+                    Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
                 }
                 if (Input.GetKeyDown("w")) {
                     PlayerOne.SwitchToPaper();
-					PlayerOneCard.GetComponent<SpriteRenderer>().sprite = cardPapper;
-                    PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
+					PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
+
+					// Get the animator of the clicked GameObject
+					Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
+
                 }
                 if (Input.GetKeyDown("e")) {
                     PlayerOne.SwitchToScissors();
-					PlayerOneCard.GetComponent<SpriteRenderer>().sprite = cardScissors;
-                    PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
+					PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
+
+					// Get the animator of the clicked GameObject
+					Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
                 }
             }
             if (PlayerTwo.cardSwitches > 0) {
                 if (Input.GetKeyDown("i")) {
                     PlayerTwo.SwitchToRock();
-					PlayerTwoCard.GetComponent<SpriteRenderer>().sprite = cardRock;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
+
+					// Get the animator of the clicked GameObject
+					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
                 }
                 if (Input.GetKeyDown("o")) {
                     PlayerTwo.SwitchToPaper();
-					PlayerTwoCard.GetComponent<SpriteRenderer>().sprite = cardPapper;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
+
+					// Get the animator of the clicked GameObject
+					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
+
+
                 }
                 if (Input.GetKeyDown("p")) {
                     PlayerTwo.SwitchToScissors();
-					PlayerTwoCard.GetComponent<SpriteRenderer>().sprite = cardScissors;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
+
+					// Get the animator of the clicked GameObject
+					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
+                    animPlayer.enabled = true; // Play the first animation
                 }
             }
         }
