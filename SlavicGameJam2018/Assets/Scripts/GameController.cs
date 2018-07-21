@@ -55,32 +55,40 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        print(inputAllowed);
+
         if (inputAllowed) {
             if (PlayerOne.cardSwitches > 0) {
                 if (Input.GetKeyDown("q")) {
                     PlayerOne.SwitchToRock();
+                    PlayerOneCard.GetComponent<SpriteRenderer>().color = Color.gray;
                     PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
                 }
                 if (Input.GetKeyDown("w")) {
                     PlayerOne.SwitchToPaper();
+                    PlayerOneCard.GetComponent<SpriteRenderer>().color = Color.white;
                     PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
                 }
                 if (Input.GetKeyDown("e")) {
                     PlayerOne.SwitchToScissors();
+                    PlayerOneCard.GetComponent<SpriteRenderer>().color = Color.cyan;
                     PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
                 }
             }
             if (PlayerTwo.cardSwitches > 0) {
                 if (Input.GetKeyDown("i")) {
                     PlayerTwo.SwitchToRock();
+                    PlayerTwoCard.GetComponent<SpriteRenderer>().color = Color.gray;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
                 }
                 if (Input.GetKeyDown("o")) {
                     PlayerTwo.SwitchToPaper();
+                    PlayerTwoCard.GetComponent<SpriteRenderer>().color = Color.white;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
                 }
                 if (Input.GetKeyDown("p")) {
                     PlayerTwo.SwitchToScissors();
+                    PlayerTwoCard.GetComponent<SpriteRenderer>().color = Color.cyan;
                     PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
                 }
             }
@@ -137,7 +145,6 @@ public class GameController : MonoBehaviour {
             PlayerOneWin();
         }
         desScale2 = new Vector3(PlayerTwo.hp / PlayerTwo.hpMax, 1,1);
-        print(desScale2);
         inputAllowed = true;
     }
     void PlayerOneGetHit() {
@@ -147,7 +154,6 @@ public class GameController : MonoBehaviour {
             PlayerTwoWin();
         }
         desScale1 = new Vector3(PlayerOne.hp / PlayerOne.hpMax, 1,1);
-        print(desScale1);
         inputAllowed = true;
     }
     void PlayerTie() {

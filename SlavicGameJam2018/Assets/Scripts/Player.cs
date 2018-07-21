@@ -30,17 +30,14 @@ public class Player : MonoBehaviour {
     public void SwitchToRock() {
         cardSwitches -= 1;
         choice = GameController.choice.rock;
-        GetComponent<SpriteRenderer>().color = Color.gray;
     }
     public void SwitchToPaper() {
         cardSwitches -= 1;
         choice = GameController.choice.paper;
-        GetComponent<SpriteRenderer>().color = Color.white;
     }
     public void SwitchToScissors() {
         cardSwitches -= 1;
         choice = GameController.choice.scissors;
-        GetComponent<SpriteRenderer>().color = Color.cyan;
     }
 
 
