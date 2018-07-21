@@ -29,28 +29,15 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     SpriteRenderer PlayerTwoCard;
 
-<<<<<<< HEAD
-=======
-    [SerializeField]
-    Sprite cardPapper;
-    [SerializeField]
-    Sprite cardRock;
-    [SerializeField]
-    Sprite cardScissors;
->>>>>>> c9328897fe206be607bc98e1e41a33126e62e776
 
 
     float initialGaugeSize;
 
     public enum choice { none, rock, paper, scissors };
     bool inputAllowed = true;
-
-<<<<<<< HEAD
-    public Player PlayerOne, PlayerTwo;
-=======
+ 
     public Player PlayerOne { get; set; }
     public Player PlayerTwo { get; set; }
->>>>>>> c9328897fe206be607bc98e1e41a33126e62e776
 
     //transition
     Vector3 vel1, vel2, desScale1, desScale2;
