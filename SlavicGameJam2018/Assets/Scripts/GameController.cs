@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
     public enum choice {none, rock, paper, scissors};
     bool inputAllowed = true;
 
-    Player PlayerOne, PlayerTwo;
+    public Player PlayerOne, PlayerTwo;
 
     //transition
     Vector3 vel1, vel2, desScale1, desScale2;
@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour {
                 if (Input.GetKeyDown("q")) {
                     PlayerOne.SwitchToRock();
 					PlayerOneCard.GetComponent<SpriteRenderer>().sprite = cardRock;
+
                     PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
                 }
                 if (Input.GetKeyDown("w")) {
