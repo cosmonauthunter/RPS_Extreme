@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: "Assets/Scenes/Micha\u0142 Leaderboard stuff.unity"
-=======
-- path: Assets/Scenes/SceneAssetsRT.unity
->>>>>>> dbd1c01dfdc5bab4cdc8915650c93486601b8563
+- path: Assets/Scenes/CompressedScene.unity
   isLoaded: 1
   isActive: 1

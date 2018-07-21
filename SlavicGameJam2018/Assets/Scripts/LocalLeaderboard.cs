@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LocalLeaderboard : MonoBehaviour {
+
+    [SerializeField]
+    GameObject entryPrefab;
 
     public class LeaderboardEntry {
 
@@ -54,10 +58,35 @@ public class LocalLeaderboard : MonoBehaviour {
         }
     }
 
+    void ShowLeaderboard() {
+
+        entries.Sort((a, b) => b.score.CompareTo(a.score));
+
+        float counter = 0;
+        foreach (LeaderboardEntry entry in entries) {
+            GameObject temp = Instantiate(entryPrefab);
+            temp.transform.SetParent(GameObject.Find("LeaderbordCanvas").transform);
+            temp.transform.localScale = new Vector3(1, 1, 1);
+            temp.transform.Find("Name").GetComponent<Text>().text = entry.playerName;
+            temp.transform.Find("Score").GetComponent<Text>().text = entry.score.ToString();
+            temp.transform.position = new Vector3(0, 2.7f - 1.2f * counter, 0);
+            counter++;
+        }
+    }
+
     // Use this for initialization
     void Start () {
-	    	
-	}
+        entries.Add(new LeaderboardEntry("hehe"));
+        entries.Add(new LeaderboardEntry("hehe2"));
+        entries.Add(new LeaderboardEntry("hehe3"));
+        entries.Add(new LeaderboardEntry("hehe4"));
+        entries.Add(new LeaderboardEntry("hehe5"));
+        playerWon("hehe");
+        playerWon("hehe");
+        playerWon("hehe");
+        playerWon("hehe2");
+        ShowLeaderboard();
+    }
 	
 	// Update is called once per frame
 	void Update () {
