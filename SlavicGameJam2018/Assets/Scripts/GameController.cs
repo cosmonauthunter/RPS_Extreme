@@ -11,13 +11,19 @@ public class GameController : MonoBehaviour {
     float elapsedTime = -1;
     [SerializeField]
     Text timerClock;
-    [SerializeField]
-    SpriteRenderer timerGauge;
+
+	[SerializeField]
+	RectTransform UITimeGauge;
 
     [SerializeField]
     RectTransform PlayerOneHealthBar;
     [SerializeField]
     RectTransform PlayerTwoHealthBar;
+
+	[SerializeField]
+	RectTransform PlayerOnePowerBar;
+	[SerializeField]
+	RectTransform PlayerTwoPowerBar;
 
     [SerializeField]
     Text PlayerOneSwitches;
@@ -47,9 +53,9 @@ public class GameController : MonoBehaviour {
         PlayerOne = new Player();
         PlayerTwo = new Player();
         elapsedTime = countdownTime;
-        initialGaugeSize = timerGauge.size.x;
+		initialGaugeSize = 1;
         vel1 = vel2 = Vector3.zero;
-        desScale1 = desScale2 = new Vector3(1, 1, 1);
+		desScale1 = desScale2 = UITimeGauge.localScale = new Vector3(1, 1, 1);
         PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
         PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
     }
@@ -131,10 +137,14 @@ public class GameController : MonoBehaviour {
             //Timer resets...
         }
 
-        timerGauge.size = new Vector2(initialGaugeSize * elapsedTime / countdownTime, timerGauge.size.y);
+
+		UITimeGauge.localScale = new Vector3(initialGaugeSize * elapsedTime / countdownTime, 1, 1);
 
         PlayerOneHealthBar.localScale = Vector3.SmoothDamp(PlayerOneHealthBar.localScale, desScale1, ref vel1, 0.5f);
         PlayerTwoHealthBar.localScale = Vector3.SmoothDamp(PlayerTwoHealthBar.localScale, desScale2, ref vel2, 0.5f);
+
+		PlayerOnePowerBar.localScale = new Vector3(PlayerOne.cardSwitches / PlayerOne.cardSwitchesMax, 1, 1);      
+		PlayerTwoPowerBar.localScale = new Vector3(PlayerTwo.cardSwitches / PlayerTwo.cardSwitchesMax, 1, 1);
 
     }
 

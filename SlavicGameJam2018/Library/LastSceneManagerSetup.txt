@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/CompressedScene.unity
+- path: Assets/Scenes/SceneHorizontalRT.unity
   isLoaded: 1
   isActive: 1

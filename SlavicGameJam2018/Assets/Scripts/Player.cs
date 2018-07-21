@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
     public float hp { get; set; }
     public float cardSwitches { get; set; }
+	public float cardSwitchesMax { get; set; }
     public float hpMax { get; set; }
 
     public GameController.choice choice { get; set; }
@@ -24,7 +25,7 @@ public class Player : MonoBehaviour {
 
     public Player() {
         hp = hpMax = 6;
-        cardSwitches = 10;
+		cardSwitches = cardSwitchesMax = 10;
     }
 
     public void SwitchToRock() {
