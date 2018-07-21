@@ -29,14 +29,28 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     SpriteRenderer PlayerTwoCard;
 
+<<<<<<< HEAD
+=======
+    [SerializeField]
+    Sprite cardPapper;
+    [SerializeField]
+    Sprite cardRock;
+    [SerializeField]
+    Sprite cardScissors;
+>>>>>>> c9328897fe206be607bc98e1e41a33126e62e776
 
 
     float initialGaugeSize;
 
-    public enum choice {none, rock, paper, scissors};
+    public enum choice { none, rock, paper, scissors };
     bool inputAllowed = true;
 
+<<<<<<< HEAD
     public Player PlayerOne, PlayerTwo;
+=======
+    public Player PlayerOne { get; set; }
+    public Player PlayerTwo { get; set; }
+>>>>>>> c9328897fe206be607bc98e1e41a33126e62e776
 
     //transition
     Vector3 vel1, vel2, desScale1, desScale2;
@@ -121,9 +135,13 @@ public class GameController : MonoBehaviour {
         timerClock.text = elapsedTime.ToString();
 
         if (elapsedTime <= 0) {
-            elapsedTime = countdownTime;
             inputAllowed = false;
+
             Clash();
+            //THIS IS WHERE ALL THE MEAT HAPPENS
+
+            elapsedTime = countdownTime;
+            //Timer resets...
         }
 
         timerGauge.size = new Vector2(initialGaugeSize * elapsedTime / countdownTime, timerGauge.size.y);
@@ -184,7 +202,14 @@ public class GameController : MonoBehaviour {
         inputAllowed = true;
     }
 
-    void PlayerOneWin() { }
-    void PlayerTwoWin() { }
+    void PlayerOneWin() {
+
+    }
+    void PlayerTwoWin() {
+
+    }
+    void GameTie() {
+
+    }
 
 }
