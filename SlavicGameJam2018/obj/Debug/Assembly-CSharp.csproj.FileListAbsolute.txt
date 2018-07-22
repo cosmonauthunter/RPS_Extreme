@@ -1,2 +1,0 @@
-/Users/arashnaderi/sgj2018rps/SlavicGameJam2018/obj/Debug/Assembly-CSharp.csprojResolveAssemblyReference.cache
-/Users/arashnaderi/sgj2018rps/SlavicGameJam2018/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
