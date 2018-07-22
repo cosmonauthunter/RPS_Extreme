@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio for Mac
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlavicGameJam2018", "Assembly-CSharp.csproj", "{515F06E6-773A-FAF6-81C1-A770C2F5F8DA}"
 EndProject
 Global
