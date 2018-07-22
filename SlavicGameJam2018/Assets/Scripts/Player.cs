@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public float hp { get; set; }
+    public float hpMax { get; set; }
     public float cardSwitches { get; set; }
 	public float cardSwitchesMax { get; set; }
-    public float hpMax { get; set; }
 
     public GameController.choice choice { get; set; }
 
@@ -29,15 +29,21 @@ public class Player : MonoBehaviour {
     }
 
     public void SwitchToRock() {
-        cardSwitches -= 1;
+        if (choice != GameController.choice.rock) {
+            cardSwitches -= 1;
+        }
         choice = GameController.choice.rock;
     }
     public void SwitchToPaper() {
-        cardSwitches -= 1;
+        if (choice != GameController.choice.paper) {
+            cardSwitches -= 1;
+        }
         choice = GameController.choice.paper;
     }
     public void SwitchToScissors() {
-        cardSwitches -= 1;
+        if (choice != GameController.choice.scissors) {
+            cardSwitches -= 1;
+        }
         choice = GameController.choice.scissors;
     }
 

@@ -7,33 +7,26 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField]
-    float countdownTime;
+    float initialCountdownTime;
     float elapsedTime = -1;
+ 
+	[SerializeField]
+	RectTransform timeGauge;
+
     [SerializeField]
-    Text timerClock;
+    RectTransform player1HPBar;
+    [SerializeField]
+    RectTransform player2HPBar;
 
 	[SerializeField]
-	RectTransform UITimeGauge;
-
-    [SerializeField]
-    RectTransform PlayerOneHealthBar;
-    [SerializeField]
-    RectTransform PlayerTwoHealthBar;
-
+	RectTransform player1MPBar;
 	[SerializeField]
-	RectTransform PlayerOnePowerBar;
-	[SerializeField]
-	RectTransform PlayerTwoPowerBar;
+	RectTransform player2MPBar;
 
     [SerializeField]
-    Text PlayerOneSwitches;
+    SpriteRenderer player1CardSprite;
     [SerializeField]
-    Text PlayerTwoSwitches;
-
-    [SerializeField]
-    SpriteRenderer PlayerOneCard;
-    [SerializeField]
-    SpriteRenderer PlayerTwoCard;
+    SpriteRenderer player2CardSprite;
 
 
 
@@ -42,22 +35,20 @@ public class GameController : MonoBehaviour {
     public enum choice { none, rock, paper, scissors };
     bool inputAllowed = true;
  
-    public Player PlayerOne { get; set; }
-    public Player PlayerTwo { get; set; }
+    public Player player1 { get; set; }
+    public Player player2 { get; set; }
 
     //transition
     Vector3 vel1, vel2, desScale1, desScale2;
     
     // Use this for initialization
     void Start() {
-        PlayerOne = new Player();
-        PlayerTwo = new Player();
-        elapsedTime = countdownTime;
+        player1 = new Player();
+        player2 = new Player();
+        elapsedTime = initialCountdownTime;
 		initialGaugeSize = 1;
         vel1 = vel2 = Vector3.zero;
-		desScale1 = desScale2 = UITimeGauge.localScale = new Vector3(1, 1, 1);
-        PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
-        PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
+		desScale1 = desScale2 = timeGauge.localScale = new Vector3(1, 1, 1);
     }
 
     // Update is called once per frame
@@ -66,66 +57,40 @@ public class GameController : MonoBehaviour {
         print(inputAllowed);
 
         if (inputAllowed) {
-            if (PlayerOne.cardSwitches > 0) {
+            if (player1.cardSwitches > 0) {
                 if (Input.GetKeyDown("q")) {
-					PlayerOne.SwitchToRock();
-                    PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
-
-
-					// Get the animator of the clicked GameObject
-                    Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+					player1.SwitchToRock();
+                    player1CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
                 }
                 if (Input.GetKeyDown("w")) {
-                    PlayerOne.SwitchToPaper();
-					PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
-
-					// Get the animator of the clicked GameObject
-					Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+                    player1.SwitchToPaper();
+				    player1CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
 
                 }
                 if (Input.GetKeyDown("e")) {
-                    PlayerOne.SwitchToScissors();
-					PlayerOneSwitches.text = PlayerOne.cardSwitches.ToString();
-
-					// Get the animator of the clicked GameObject
-					Animator animPlayer = PlayerOneCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+                    player1.SwitchToScissors();
+					player1CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
                 }
             }
-            if (PlayerTwo.cardSwitches > 0) {
+            if (player2.cardSwitches > 0) {
                 if (Input.GetKeyDown("i")) {
-                    PlayerTwo.SwitchToRock();
-                    PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
-
-					// Get the animator of the clicked GameObject
-					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+                    player2.SwitchToRock();
+            		player2CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
                 }
                 if (Input.GetKeyDown("o")) {
-                    PlayerTwo.SwitchToPaper();
-                    PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
-
-					// Get the animator of the clicked GameObject
-					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+                    player2.SwitchToPaper();
+                 	player2CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
 
 
                 }
                 if (Input.GetKeyDown("p")) {
-                    PlayerTwo.SwitchToScissors();
-                    PlayerTwoSwitches.text = PlayerTwo.cardSwitches.ToString();
-
-					// Get the animator of the clicked GameObject
-					Animator animPlayer = PlayerTwoCard.GetComponent<Animator>();
-                    animPlayer.enabled = true; // Play the first animation
+                    player2.SwitchToScissors();
+					player2CardSprite.GetComponent<Animator>().enabled = true; // Play the first animation
                 }
             }
         }
 
         elapsedTime -= Time.deltaTime;
-        timerClock.text = elapsedTime.ToString();
 
         if (elapsedTime <= 0) {
             inputAllowed = false;
@@ -133,69 +98,66 @@ public class GameController : MonoBehaviour {
             Clash();
             //THIS IS WHERE ALL THE MEAT HAPPENS
 
-            elapsedTime = countdownTime;
+            initialCountdownTime *= 0.8f;
+            elapsedTime = initialCountdownTime;
             //Timer resets...
         }
+        
+		timeGauge.localScale = new Vector3(initialGaugeSize * elapsedTime / initialCountdownTime, 1, 1);
 
+        player1HPBar.localScale = Vector3.SmoothDamp(player1HPBar.localScale, desScale1, ref vel1, 0.5f);
+        player2HPBar.localScale = Vector3.SmoothDamp(player2HPBar.localScale, desScale2, ref vel2, 0.5f);
 
-		UITimeGauge.localScale = new Vector3(initialGaugeSize * elapsedTime / countdownTime, 1, 1);
-
-        PlayerOneHealthBar.localScale = Vector3.SmoothDamp(PlayerOneHealthBar.localScale, desScale1, ref vel1, 0.5f);
-        PlayerTwoHealthBar.localScale = Vector3.SmoothDamp(PlayerTwoHealthBar.localScale, desScale2, ref vel2, 0.5f);
-
-		PlayerOnePowerBar.localScale = new Vector3(PlayerOne.cardSwitches / PlayerOne.cardSwitchesMax, 1, 1);      
-		PlayerTwoPowerBar.localScale = new Vector3(PlayerTwo.cardSwitches / PlayerTwo.cardSwitchesMax, 1, 1);
+		player1MPBar.localScale = new Vector3(player1.cardSwitches / player1.cardSwitchesMax, 1, 1);      
+		player2MPBar.localScale = new Vector3(player2.cardSwitches / player2.cardSwitchesMax, 1, 1);
 
     }
 
     void Clash() {
 
-        if (PlayerOne.choice == choice.none && PlayerTwo.choice == choice.none) {
+        if (player1.choice == choice.none && player2.choice == choice.none) {
             PlayerTie();
         }
-        if (PlayerOne.choice == choice.none && PlayerTwo.choice != choice.none) {
+        if (player1.choice == choice.none && player2.choice != choice.none) {
             PlayerOneGetHit();
         }
-        if (PlayerTwo.choice == choice.none && PlayerOne.choice != choice.none) {
+        if (player2.choice == choice.none && player1.choice != choice.none) {
             PlayerTwoGetHit();
         }
-        if (PlayerOne.choice == choice.rock) {
-            if (PlayerTwo.choice == choice.rock) { PlayerTie(); }
-            if (PlayerTwo.choice == choice.paper) { PlayerOneGetHit(); }
-            if (PlayerTwo.choice == choice.scissors) { PlayerTwoGetHit(); }
+        if (player1.choice == choice.rock) {
+            if (player2.choice == choice.rock) { PlayerTie(); }
+            if (player2.choice == choice.paper) { PlayerOneGetHit(); }
+            if (player2.choice == choice.scissors) { PlayerTwoGetHit(); }
         }
-        if (PlayerOne.choice == choice.paper) {
-            if (PlayerTwo.choice == choice.rock) { PlayerTwoGetHit(); }
-            if (PlayerTwo.choice == choice.paper) { PlayerTie(); }
-            if (PlayerTwo.choice == choice.scissors) { PlayerOneGetHit(); }
+        if (player1.choice == choice.paper) {
+            if (player2.choice == choice.rock) { PlayerTwoGetHit(); }
+            if (player2.choice == choice.paper) { PlayerTie(); }
+            if (player2.choice == choice.scissors) { PlayerOneGetHit(); }
         }
-        if (PlayerOne.choice == choice.scissors) {
-            if (PlayerTwo.choice == choice.rock) { PlayerOneGetHit(); }
-            if (PlayerTwo.choice == choice.paper) { PlayerTwoGetHit(); }
-            if (PlayerTwo.choice == choice.scissors) { PlayerTie(); }
+        if (player1.choice == choice.scissors) {
+            if (player2.choice == choice.rock) { PlayerOneGetHit(); }
+            if (player2.choice == choice.paper) { PlayerTwoGetHit(); }
+            if (player2.choice == choice.scissors) { PlayerTie(); }
         }
     }
 
     void PlayerTwoGetHit() {
-        print("Player one won the round");
-        PlayerTwo.hp -= 1;
-        if (PlayerTwo.hp==0) {
+        player2.hp -= 1;
+        if (player2.hp==0) {
             PlayerOneWin();
         }
-        desScale2 = new Vector3(PlayerTwo.hp / PlayerTwo.hpMax, 1,1);
+        desScale2 = new Vector3(player2.hp / player2.hpMax, 1,1);
         inputAllowed = true;
     }
     void PlayerOneGetHit() {
-        print("Player two won the round");
-        PlayerOne.hp -= 1;
-        if (PlayerOne.hp == 0) {
+        player1.hp -= 1;
+        if (player1.hp == 0) {
             PlayerTwoWin();
         }
-        desScale1 = new Vector3(PlayerOne.hp / PlayerOne.hpMax, 1,1);
+        desScale1 = new Vector3(player1.hp / player1.hpMax, 1,1);
         inputAllowed = true;
     }
     void PlayerTie() {
-        print("It's a tie");
         inputAllowed = true;
     }
 

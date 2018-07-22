@@ -16,7 +16,7 @@ public class spriteSwapPlayer2 : MonoBehaviour
 
 	public void SwapSprite()
 	{
-		GameController.choice playersChoice2 = GameObject.Find("GameController").GetComponent<GameController>().PlayerTwo.choice;
+		GameController.choice playersChoice2 = GameObject.Find("GameController").GetComponent<GameController>().player2.choice;
 
 		if (playersChoice2 == GameController.choice.paper)
 		{
