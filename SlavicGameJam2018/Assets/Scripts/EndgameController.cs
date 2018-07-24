@@ -11,7 +11,7 @@ public class EndgameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Return)) {
+		if ((Input.GetKeyDown(KeyCode.Return)) || (Input.GetKeyDown(KeyCode.Space)) ) {
             GameObject.Find("GameController").GetComponent<GameController>().RestartGame();
         };	
 	}

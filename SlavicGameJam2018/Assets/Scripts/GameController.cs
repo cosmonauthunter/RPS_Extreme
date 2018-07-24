@@ -46,6 +46,11 @@ public class GameController : MonoBehaviour {
 	Animator player1HealthBarAnimator;
 	Animator player2HealthBarAnimator;
 
+	AudioSource audioData;
+
+	[SerializeField]
+	Camera MainCameraRef;
+
     float initialGaugeSize;
 
     public enum choice { none, rock, paper, scissors };
@@ -80,7 +85,8 @@ public class GameController : MonoBehaviour {
     }
 
     public void Initialise() {
-
+		
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS_Rewind>().enabled = false;
         timerEnabled = true;
 
     }
@@ -243,23 +249,30 @@ public class GameController : MonoBehaviour {
     void PlayerOneWin()
     {
         vicoryScreen.SetActive(true);
+
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
         player1WinText.SetActive(true);
         timerEnabled = false;
     }
     void PlayerTwoWin()
     {
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
         vicoryScreen.SetActive(true);
         player2WinText.SetActive(true);
         timerEnabled = false;
     }
     void GameTie()
     {
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS>().enabled = true;
         vicoryScreen.SetActive(true);
         timerEnabled = false;
     }
 
     public void RestartGame()
     {
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS>().enabled = false;
+		MainCameraRef.GetComponent<CameraFilterPack_TV_VHS_Rewind>().enabled = false;
+
         player1 = new Player();
         player2 = new Player();
         tieCounter = 0;
@@ -272,4 +285,10 @@ public class GameController : MonoBehaviour {
         desScale1 = desScale2 = timeGauge.localScale = new Vector3(1, 1, 1);
         //tieText.SetActive(false);
     }
+
+	public void FightAudio()
+	{
+		audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
+	}
 }
