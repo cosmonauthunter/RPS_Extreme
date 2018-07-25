@@ -100,42 +100,46 @@ public class GameController : MonoBehaviour {
 
         if (inputAllowed) {
             if (player1.cardSwitches > 0) {
-				if (Input.GetKeyUp("q")) {
+				if (Input.GetKeyDown("q")) {
+					player1CardAniamator.enabled = true;
 					player1.SwitchToRock();
-					player1CardAniamator.enabled = true;
-					//player1CardAniamator.CrossFade("cardFlip", 0f); // Play flip animation
-
-                }
-				if (Input.GetKeyUp("w")) {
-                    player1.SwitchToPaper();
-					player1CardAniamator.enabled = true;
 
 					//player1CardAniamator.CrossFade("cardFlip", 0f); // Play flip animation
 
+                }
+				if (Input.GetKeyDown("w")) {
+					player1CardAniamator.enabled = true;
+					player1.SwitchToPaper();
+
+					//player1CardAniamator.CrossFade("cardFlip", 0f); // Play flip animation
+
 
                 }
-				if (Input.GetKeyUp("e")) {
-                    player1.SwitchToScissors();
+				if (Input.GetKeyDown("e")) {
 					player1CardAniamator.enabled = true;
+					player1.SwitchToScissors();
+
 					//player1CardAniamator.CrossFade("cardFlip", 0f); // Play flip animation
 
                 }
             }
             if (player2.cardSwitches > 0) {
-				if (Input.GetKeyUp("i")) {
-                    player2.SwitchToRock();
+				if (Input.GetKeyDown("i")) {
 					player2CardAniamator.enabled = true;
-
-                }
-				if (Input.GetKeyUp("o")) {
-                    player2.SwitchToPaper();
-					player2CardAniamator.enabled = true;
+					player2.SwitchToRock();
 
 
                 }
-				if (Input.GetKeyUp("p")) {
-                    player2.SwitchToScissors();
+				if (Input.GetKeyDown("o")) {
 					player2CardAniamator.enabled = true;
+					player2.SwitchToPaper();
+
+
+
+                }
+				if (Input.GetKeyDown("p")) {
+					player2CardAniamator.enabled = true;
+					player2.SwitchToScissors();
 
                 }
             }
@@ -151,15 +155,15 @@ public class GameController : MonoBehaviour {
             //THIS IS WHERE ALL THE MEAT HAPPENS
 
             //Play clash animation
+			player1CardAniamator.Play("cardAttackPlayer1", 0, 0f); // Play attack animation
 			player1CardAniamator.enabled = true;
+			player2CardAniamator.Play("cardAttackPlayer2",0,0f); // Play attack animation
 			player2CardAniamator.enabled = true;
-			player1CardAniamator.CrossFade("cardAttackPlayer1",0f); // Play attack animation
-			player2CardAniamator.CrossFade("cardAttackPlayer2",0f); // Play attack animation
 
-
+            
 			if (currentCountdownTime>0.9f)
 			{
-				currentCountdownTime *= 0.8f;
+				currentCountdownTime *= 0.95f;
 			}
             elapsedTime = currentCountdownTime;
             //Timer resets...

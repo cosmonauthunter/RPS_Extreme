@@ -1695,6 +1695,9 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420038}
+  - component: {fileID: 519420036}
+  - component: {fileID: 519420037}
   - component: {fileID: 519420033}
   - component: {fileID: 519420035}
   - component: {fileID: 519420034}
@@ -1784,13 +1787,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a1d536d0753f8d48b66dd8da3915c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: 4fdcdc5a6b74a464d9e8c305b85c0c1f, type: 3}
-  TimeX: 15
+  TimeX: 15.029469
   Distortion: 1
 --- !u!114 &519420034
 MonoBehaviour:
@@ -1804,7 +1807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: 892b1316c792f4147ab654db74f0d37e, type: 3}
-  Cryptage: 1
+  Cryptage: 0.227
   Parasite: 9
   Parasite2: 12
 --- !u!114 &519420035
@@ -1819,10 +1822,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SCShader: {fileID: 4800000, guid: afd1ed5665bf72c4ca117c50058e1664, type: 3}
-  Cryptage: 80
-  Parasite: 32
+  Cryptage: 150
+  Parasite: 76.8
   Calibrage: 0.15
-  WhiteParasite: 0.15
+  WhiteParasite: 0
+--- !u!114 &519420036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0971779da499d914c9a205948f8ee602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCShader: {fileID: 4800000, guid: 14156ee2cd4dade4a8da9c29407b9203, type: 3}
+  Fade: 1
+--- !u!114 &519420037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f17af643e3a78ea40821bac0819a68fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCShader: {fileID: 4800000, guid: 240c17d4cd1b7f34fb7191e55d511841, type: 3}
+  Fade: 0.15
+--- !u!114 &519420038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358fda6f841ae0a49a45422fb2b6bae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SCShader: {fileID: 4800000, guid: 9012d2cefda3b2e469ba13e4a41157ec, type: 3}
+  Fade: 0.06
 --- !u!1 &541126560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2413,15 +2455,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.9890068
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.g
-      value: 0.5147059
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.b
-      value: 0.5147059
+      value: 0.6839622
       objectReference: {fileID: 0}
     - target: {fileID: 199586265458446622, guid: b443e26a77d42e14f8ce9553a2e3d66e,
         type: 2}
@@ -5234,15 +5276,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.99215686
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.g
-      value: 0.5147059
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 10823338, guid: b443e26a77d42e14f8ce9553a2e3d66e, type: 2}
       propertyPath: m_Color.b
-      value: 0.5147059
+      value: 0.6862745
       objectReference: {fileID: 0}
     - target: {fileID: 199586265458446622, guid: b443e26a77d42e14f8ce9553a2e3d66e,
         type: 2}
